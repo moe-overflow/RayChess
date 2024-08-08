@@ -1,4 +1,5 @@
 #include <raylib.h>
+#include "board.h"
 
 const int DIMENSION = 800;
 
@@ -7,13 +8,13 @@ int main(void) {
     InitWindow(DIMENSION, DIMENSION, "Chess");
     SetTargetFPS(60);
 
+    load_textures();
     while (!WindowShouldClose()){
         BeginDrawing();
-        ClearBackground(RAYWHITE);
-        DrawText("HelloRayChess", 200, 200, 20, LIGHTGRAY);
-
+        render_board(DIMENSION / 8);
         EndDrawing();
     }
+    unload_textures();
     CloseWindow();
 
     return 0;
